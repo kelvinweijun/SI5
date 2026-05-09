@@ -1,0 +1,125 @@
+
+======================================================================
+AGENTIC AI DISCORD BOT - PROJECT SUMMARY
+======================================================================
+
+PROJECT OVERVIEW
+----------------
+A production-ready agentic AI system with advanced reasoning, multi-layer
+memory, code execution, and OSINT capabilities. Deployable on Render.com.
+
+STATISTICS
+----------
+Total Python files:     11
+Total lines of code:    3,160
+Total project size:     137.2 KB
+
+ARCHITECTURE COMPONENTS
+-----------------------
+
+1. DISCORD BOT INTERFACE (src/discord/)
+   - Multi-server deployment capability
+   - Slash commands: /ask, /reason, /memory, /upload, /osint, /help
+   - Natural language processing (mentions & DMs)
+   - Role-based access control (Admin-only OSINT)
+   - File processing: ZIP repository analysis
+   - Thread and channel context awareness
+   - User-specific memory recall
+
+2. MULTI-LAYER MEMORY (src/memory/)
+   - Layer 1: Working Memory (current conversation)
+   - Layer 2: Episodic Memory (conversation history)
+   - Layer 3: Semantic Memory (learned concepts)
+   - Layer 4: Procedural Memory (skills & strategies)
+   - Graph Database: Entity relationships (NetworkX)
+   - Vector Store: Semantic search (ChromaDB + sentence-transformers)
+   - Sleep-Time Compute: Background relationship building
+   - Decay & Scoring: Dynamic relevance weighting
+   - Entity Disambiguation: "Which Max in Singapore?"
+
+3. ADVANCED REASONING (src/reasoning/)
+   - Sequential: Chain-of-Thought reasoning
+   - Parallel: Tree-of-Thoughts (multi-path exploration)
+   - Reflective: Self-critique and refinement loops
+   - Analogical: Cross-domain pattern matching
+   - Code Sandbox: Restricted Python execution
+   - Tool Registry: Dynamic function calling
+
+4. OSINT MODULE (src/osint/)
+   - Admin-only activation (explicit user request)
+   - User Intelligence: metadata, activity patterns, linked accounts
+   - Server Intelligence: structure, roles, invites
+   - Message Analysis: temporal patterns, content analysis
+   - Social Graph: NetworkX relationship mapping
+   - Structured Reports: Markdown/JSON export
+
+5. LLM CLIENT (src/utils/llm_client.py)
+   - Primary: Cerebras API with gpt-oss-120b
+   - Automatic key rotation on rate limits
+   - Fallback: OpenAI, Anthropic (if configured)
+   - Exponential backoff with jitter
+   - Request tracking and monitoring
+
+6. PERSONALITY SYSTEM (src/personality/)
+   - Few-shot prompting architecture
+   - System Prompt -> Dialogue Examples -> Memory -> Current
+   - Configurable traits and communication rules
+   - Error handling templates
+
+DEPLOYMENT
+----------
+Platform:     Render.com
+Services:     Web (bot) + Redis + Worker (background)
+Storage:      Persistent disk (10GB)
+Runtime:      Python 3.11+
+
+KEY FEATURES
+------------
+✓ Memory-First Design: Reasoning IS Memory
+✓ Sleep-Time Compute: Background processing
+✓ Human On the Loop: Autonomous with supervision
+✓ Self-Repair: Context accumulation over time
+✓ Skill Building: Procedural memory from patterns
+✓ Multi-Server: Deploy across multiple Discord servers
+✓ Rate Limit Protection: API key rotation
+✓ Security: Role-based access, sandboxed execution
+
+FILES BREAKDOWN
+---------------
+  .env.example                                     1,368 bytes
+  .gitignore                                         459 bytes
+  Dockerfile                                         677 bytes
+  README.md                                        6,925 bytes
+  SETUP.md                                         6,040 bytes
+  config/dialogue.txt                              2,237 bytes
+  config/personality.json                          1,051 bytes
+  render.yaml                                      1,241 bytes
+  requirements.txt                                 1,246 bytes
+  scripts/deploy.sh                                1,036 bytes
+  src/__init__.py                                      0 bytes
+  src/discord/__init__.py                         28,601 bytes
+  src/main.py                                      6,362 bytes
+  src/memory/__init__.py                          20,443 bytes
+  src/osint/__init__.py                           15,010 bytes
+  src/personality/__init__.py                     10,168 bytes
+  src/reasoning/__init__.py                       20,399 bytes
+  src/sleep_compute.py                             3,835 bytes
+  src/utils/__init__.py                                0 bytes
+  src/utils/llm_client.py                         11,917 bytes
+  tests/test_agent.py                              1,523 bytes
+
+======================================================================
+NEXT STEPS
+======================================================================
+
+1. Configure environment variables in .env
+2. Add Cerebras API keys to config/cerebras_api_keys.txt
+3. Create Discord bot application and get token
+4. Deploy to Render.com using render.yaml blueprint
+5. Invite bot to Discord server
+6. Test with /help command
+
+For detailed setup instructions, see SETUP.md
+For architecture details, see README.md
+
+======================================================================

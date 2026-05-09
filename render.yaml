@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: agentic-ai-discord-bot
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python -m src.main"
+    envVars:
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: CEREBRAS_API_KEYS_FILE
+        value: /etc/secrets/cerebras_api_keys.txt
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: agent-redis
+          property: connectionString
+      - key: PORT
+        value: 10000
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    disk:
+      name: agent-data
+      mountPath: /data
+      sizeGB: 10
+
+  - type: redis
+    name: agent-redis
+    plan: starter
+    ipAllowList: []
+
+  - type: worker
+    name: agent-background-processor
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python -m src.sleep_compute"
+    envVars:
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: agent-redis
+          property: connectionString
