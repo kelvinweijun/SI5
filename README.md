@@ -1,4 +1,4 @@
-# System Intelligence 5 (Discord Bot version)
+# System Intelligence 5
 
 A sophisticated, production-ready agentic AI system deployable on Render.com that operates as a Discord bot with advanced reasoning, memory, code execution, and OSINT capabilities.
 
